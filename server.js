@@ -31,10 +31,15 @@ fs.writeFileSync("./db/db.json",JSON.stringify(info))
 res.json(info)
 })
 
+app.delete(`/api/notes/:id`, (req, res) => {
+    console.log(req.params.id)
+})
+
 
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
+
 
 
 app.listen(PORT, () =>
