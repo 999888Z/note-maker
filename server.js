@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
+//get route for rendering notes.html
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
@@ -34,8 +35,7 @@ app.post('/api/notes', (req, res) => {
 
 // delete route for targeted id coming from 'id' parameter
 app.delete(`/api/notes/:id`, (req, res) => {
-  console.log(req.params.id)
-
+  
   // getting the targeted id to delete
   const chosenID = req.params.id;
 
@@ -58,7 +58,7 @@ app.delete(`/api/notes/:id`, (req, res) => {
   res.json(notes);
 })
 
-
+// catch all route that renders index.html
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
